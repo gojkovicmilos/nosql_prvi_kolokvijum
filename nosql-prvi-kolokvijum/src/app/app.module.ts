@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,7 +15,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './auth.interceptor';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
-import { FileManagerComponent } from './file-manager/file-manager.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +26,7 @@ import { FileManagerComponent } from './file-manager/file-manager.component';
     BoardUserComponent,
     ProfileComponent,
     UserListComponent,
-    UserEditComponent,
-    FileSelectDirective,
-    FileManagerComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
