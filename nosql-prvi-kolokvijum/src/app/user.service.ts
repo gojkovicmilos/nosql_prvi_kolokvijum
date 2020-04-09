@@ -49,7 +49,5 @@ export class UserService {
     return this.http.delete(USR_URL);
   }
 
-  findByTitle(title) {
-    return this.http.get(`${USR_URL}?title=${title}`);
-  }
+  
 }

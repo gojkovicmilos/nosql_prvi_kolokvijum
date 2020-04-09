@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -13,7 +14,7 @@ export class UserListComponent implements OnInit {
   currentIndex = -1;
   title = '';
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router ) { }
 
   ngOnInit() {
     this.retrieveUsers();
@@ -42,6 +43,7 @@ export class UserListComponent implements OnInit {
     this.currentIndex = index;
   }
 
+
   removeAllUsers() {
     this.userService.deleteAll()
       .subscribe(
@@ -54,15 +56,17 @@ export class UserListComponent implements OnInit {
         });
   }
 
-  searchTitle() {
-    this.userService.findByTitle(this.title)
+  deleteUser(id) {
+    this.userService.delete(id)
       .subscribe(
-        data => {
-          this.users = data;
-          console.log(data);
+        response => {
+          console.log(response);
+          this.router.navigate(['/users']);
         },
         error => {
           console.log(error);
         });
   }
+
+  
 }

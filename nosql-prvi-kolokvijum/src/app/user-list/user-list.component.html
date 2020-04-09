@@ -1,23 +1,4 @@
 <div class="list row">
-    <div class="col-md-8">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by title"
-          [(ngModel)]="title"
-        />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchTitle()"
-          >
-            Search
-          </button>
-        </div>
-      </div>
-    </div>
     <div class="col-md-6">
       <h4>Users List</h4>
       <ul class="list-group">
@@ -27,7 +8,7 @@
           [class.active]="i == currentIndex"
           (click)="setActiveUser(user, i)"
         >
-          {{ user.title }}
+          {{ user.username }}
         </li>
       </ul>
   
@@ -39,20 +20,23 @@
       <div *ngIf="currentUser">
         <h4>User</h4>
         <div>
-          <label><strong>Title:</strong></label> {{ currentUser.title }}
+          <label><strong>Username:</strong></label> {{ currentUser.username }}
         </div>
         <div>
-          <label><strong>Description:</strong></label>
-          {{ currentUser.description }}
+          <label><strong>Email:</strong></label>
+          {{ currentUser.email}}
         </div>
         <div>
-          <label><strong>Status:</strong></label>
-          {{ currentUser.published ? "Published" : "Pending" }}
+          <label><strong>Role:</strong></label>
+          {{ currentUser.roles[0].name}}
         </div>
   
         <a class="badge badge-warning" href="/users/{{ currentUser.id }}">
           Edit
         </a>
+        <button class="m-3 btn btn-sm btn-danger" (click)="deleteUser(currentUser.id)">
+            DeleteUser
+          </button>
       </div>
   
       <div *ngIf="!currentUser">
